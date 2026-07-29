@@ -29,7 +29,8 @@
 | **آیتم ۱۹** | برای وراثت طراحی کنید یا آن را ممنوع کنید | [item19_inheritance_design](src/main/java/org/example/item19_inheritance_design)                                                                           |
 | **آیتم ۲۰** | کلاس‌های انتزاعی را به Interface ترجیح ندهید | [item20_interfaces_over_abstract_classes](src/main/java/org/example/item20_interfaces_over_abstract_classes)         |
 | **آیتم ۲۱** | Interfaceها را برای آینده طراحی کنید | [item21_design_interfaces](src/main/java/org/example/item21_design_interfaces)         |
-| **آیتم ۲۲** | Interfaceها را برای آینده طراحی کنید | [item22_interfaces_define_types](src/main/java/org/example/item22_interfaces_define_types)         |
+| **آیتم ۲۲** | از Interface فقط برای تعریف نوع استفاده کنید | [item22_interfaces_define_types](src/main/java/org/example/item22_interfaces_define_types)         |
+| **آیتم ۲۳** | ساختارهای کلاسی را برای آینده طراحی کنید | [item23_class_hierarchies](src/main/java/org/example/item23_class_hierarchies)         |
 
 ---
 
