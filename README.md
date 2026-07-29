@@ -24,6 +24,7 @@
 | **آیتم ۱۴** | (در حال ترجمه) | [item14](src/main/java/org/example/item14)                                                                           |
 | **آیتم ۱۵** | (در حال ترجمه) | [item15](src/main/java/org/example/item15)                                                                           |
 | **آیتم ۱۶** | (در حال ترجمه) | [item16](src/main/java/org/example/item16)                                                                           |
+| **آیتم ۱۷** | (در حال ترجمه) | [item17](src/main/java/org/example/item17)                                                                           |
 
 ---
 
