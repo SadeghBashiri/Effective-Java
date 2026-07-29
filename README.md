@@ -23,6 +23,7 @@
 | **آیتم ۱۳** | بازنویسی متد clone با احتیاط | [item13_overridecloneJudiciously](src/main/java/org/example/item13_overridecloneJudiciously)                         |
 | **آیتم ۱۴** | (در حال ترجمه) | [item14](src/main/java/org/example/item14)                                                                           |
 | **آیتم ۱۵** | (در حال ترجمه) | [item15](src/main/java/org/example/item15)                                                                           |
+| **آیتم ۱۶** | (در حال ترجمه) | [item16](src/main/java/org/example/item16)                                                                           |
 
 ---
 
