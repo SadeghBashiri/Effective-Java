@@ -33,6 +33,7 @@
 | **آیتم ۲۳** | ساختارهای کلاسی را برای آینده طراحی کنید | [item23_class_hierarchies](src/main/java/org/example/item23_class_hierarchies)         |
 | **آیتم ۲۴** | کلاس‌های عضو استاتیک | [item24_static_member_classes](src/main/java/org/example/item24_static_member_classes)         |
 | **آیتم ۲۵** | کلاس‌های تک‌سطحی | [item25_single_top_level_class](src/main/java/org/example/item25_single_top_level_class)         |
+| **آیتم ۲۶** | انواع خام (Raw Types) | [item26_raw_types](src/main/java/org/example/item26_raw_types)         |
 
 ---
 
