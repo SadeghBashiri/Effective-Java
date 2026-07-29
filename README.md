@@ -6,21 +6,23 @@
 
 با کلیک روی هر آیتم، به پکیج مربوطه در کد هدایت می‌شوید:
 
-| شماره آیتم | عنوان فارسی | لینک به پکیج |
-|------------|-------------|--------------|
-| **آیتم ۱** | کارخانه‌های ایستا به‌جای سازنده‌ها | [item01_statictfactory](src/main/java/org/example/item01_staticfactory) |
-| **آیتم ۲** | استفاده از الگوی Builder | [item02_builder](src/main/java/org/example/item02_builder) |
-| **آیتم ۳** | پیاده‌سازی Singleton | [item03_SingletonPattern](src/main/java/org/example/item03_SingletonPattern) |
-| **آیتم ۴** | کلاس‌های غیرقابل نمونه‌سازی | [item04_noninstantiable](src/main/java/org/example/item04_noninstantiable) |
-| **آیتم ۵** | تزریق وابستگی به‌جای hardcoding | [item05_dependencyInjection](src/main/java/org/example/item05_dependencyInjection) |
-| **آیتم ۶** | از ایجاد اشیای غیرضروری بپرهیزید | [item06_avoidCreatingUnnecessaryObjects](src/main/java/org/example/item06_avoidCreatingUnnecessaryObjects) |
+| شماره آیتم | عنوان فارسی | لینک به پکیج                                                                                                         |
+|------------|-------------|----------------------------------------------------------------------------------------------------------------------|
+| **آیتم ۱** | کارخانه‌های ایستا به‌جای سازنده‌ها | [item01_statictfactory](src/main/java/org/example/item01_staticfactory)                                              |
+| **آیتم ۲** | استفاده از الگوی Builder | [item02_builder](src/main/java/org/example/item02_builder)                                                           |
+| **آیتم ۳** | پیاده‌سازی Singleton | [item03_SingletonPattern](src/main/java/org/example/item03_SingletonPattern)                                         |
+| **آیتم ۴** | کلاس‌های غیرقابل نمونه‌سازی | [item04_noninstantiable](src/main/java/org/example/item04_noninstantiable)                                           |
+| **آیتم ۵** | تزریق وابستگی به‌جای hardcoding | [item05_dependencyInjection](src/main/java/org/example/item05_dependencyInjection)                                   |
+| **آیتم ۶** | از ایجاد اشیای غیرضروری بپرهیزید | [item06_avoidCreatingUnnecessaryObjects](src/main/java/org/example/item06_avoidCreatingUnnecessaryObjects)           |
 | **آیتم ۷** | حذف ارجاعات به اشیای منسوخ | [item07_eliminate_obsolete_object_references](src/main/java/org/example/item07_eliminate_obsolete_object_references) |
-| **آیتم ۸** | از Finalizer و Cleaner استفاده نکنید | [item08_avoid_finalizers_and_cleaners](src/main/java/org/example/item08_avoid_finalizers_and_cleaners) |
-| **آیتم ۹** | (در حال ترجمه) | [item09](src/main/java/org/example/item09) |
-| **آیتم ۱۰** | (در حال ترجمه) | [item10](src/main/java/org/example/item10) |
-| **آیتم ۱۱** | (در حال ترجمه) | [item11](src/main/java/org/example/item11) |
-| **آیتم ۱۲** | (در حال ترجمه) | [item12](src/main/java/org/example/item12) |
-| **آیتم ۱۳** | بازنویسی متد clone با احتیاط | [item13_overridecloneJudiciously](src/main/java/org/example/item13_overridecloneJudiciously) |
+| **آیتم ۸** | از Finalizer و Cleaner استفاده نکنید | [item08_avoid_finalizers_and_cleaners](src/main/java/org/example/item08_avoid_finalizers_and_cleaners)               |
+| **آیتم ۹** | (در حال ترجمه) | [item09](src/main/java/org/example/item09)                                                                           |
+| **آیتم ۱۰** | (در حال ترجمه) | [item10](src/main/java/org/example/item10)                                                                           |
+| **آیتم ۱۱** | (در حال ترجمه) | [item11](src/main/java/org/example/item11)                                                                           |
+| **آیتم ۱۲** | (در حال ترجمه) | [item12](src/main/java/org/example/item12)                                                                           |
+| **آیتم ۱۳** | بازنویسی متد clone با احتیاط | [item13_overridecloneJudiciously](src/main/java/org/example/item13_overridecloneJudiciously)                         |
+| **آیتم ۱۴** | (در حال ترجمه) | [item14](src/main/java/org/example/item14)                                                                           |
+| **آیتم ۱۵** | (در حال ترجمه) | [item15](src/main/java/org/example/item15)                                                                           |
 
 ---
 
