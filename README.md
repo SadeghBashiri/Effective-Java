@@ -16,17 +16,18 @@
 | **آیتم ۶** | از ایجاد اشیای غیرضروری بپرهیزید | [item06_avoidCreatingUnnecessaryObjects](src/main/java/org/example/item06_avoidCreatingUnnecessaryObjects)           |
 | **آیتم ۷** | حذف ارجاعات به اشیای منسوخ | [item07_eliminate_obsolete_object_references](src/main/java/org/example/item07_eliminate_obsolete_object_references) |
 | **آیتم ۸** | از Finalizer و Cleaner استفاده نکنید | [item08_avoid_finalizers_and_cleaners](src/main/java/org/example/item08_avoid_finalizers_and_cleaners)               |
-| **آیتم ۹** | (در حال ترجمه) | [item09](src/main/java/org/example/item09)                                                                           |
-| **آیتم ۱۰** | (در حال ترجمه) | [item10](src/main/java/org/example/item10)                                                                           |
-| **آیتم ۱۱** | (در حال ترجمه) | [item11](src/main/java/org/example/item11)                                                                           |
-| **آیتم ۱۲** | (در حال ترجمه) | [item12](src/main/java/org/example/item12)                                                                           |
+| **آیتم ۹** | در try-with-resources از منابع استفاده کنید | [item09](src/main/java/org/example/item09)                                                                           |
+| **آیتم ۱۰** | قرارداد equals را رعایت کنید | [item10](src/main/java/org/example/item10)                                                                           |
+| **آیتم ۱۱** | همواره hashCode را بازنویسی کنید | [item11](src/main/java/org/example/item11)                                                                           |
+| **آیتم ۱۲** | همواره toString را بازنویسی کنید | [item12](src/main/java/org/example/item12)                                                                           |
 | **آیتم ۱۳** | بازنویسی متد clone با احتیاط | [item13_overridecloneJudiciously](src/main/java/org/example/item13_overridecloneJudiciously)                         |
-| **آیتم ۱۴** | (در حال ترجمه) | [item14](src/main/java/org/example/item14)                                                                           |
-| **آیتم ۱۵** | (در حال ترجمه) | [item15](src/main/java/org/example/item15)                                                                           |
-| **آیتم ۱۶** | (در حال ترجمه) | [item16](src/main/java/org/example/item16)                                                                           |
-| **آیتم ۱۷** | (در حال ترجمه) | [item17](src/main/java/org/example/item17)                                                                           |
-| **آیتم ۱۸** | (در حال ترجمه) | [item18](src/main/java/org/example/item18)                                                                           |
-| **آیتم ۱۹** | (در حال ترجمه) | [item19](src/main/java/org/example/item19)                                                                           |
+| **آیتم ۱۴** | پیاده‌سازی Comparable را در نظر بگیرید | [item14](src/main/java/org/example/item14)                                                                           |
+| **آیتم ۱۵** | دسترسی کلاس‌ها و اعضا را محدود کنید | [item15](src/main/java/org/example/item15)                                                                           |
+| **آیتم ۱۶** | در کلاس‌های عمومی از Accessor استفاده کنید | [item16](src/main/java/org/example/item16)                                                                           |
+| **آیتم ۱۷** | تغییرپذیری را به حداقل برسانید | [item17](src/main/java/org/example/item17)                                                                           |
+| **آیتم ۱۸** | ترکیب را به وراثت ترجیح دهید | [item18](src/main/java/org/example/item18)                                                                           |
+| **آیتم ۱۹** | برای وراثت طراحی کنید یا آن را ممنوع کنید | [item19](src/main/java/org/example/item19)                                                                           |
+| **آیتم ۲۰** | کلاس‌های انتزاعی را به Interface ترجیح ندهید | [item20_interfaces_over_abstract_classes](src/main/java/org/example/item20_interfaces_over_abstract_classes)                                                                           |
 
 ---
 
