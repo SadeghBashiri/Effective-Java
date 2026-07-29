@@ -32,6 +32,7 @@
 | **آیتم ۲۲** | از Interface فقط برای تعریف نوع استفاده کنید | [item22_interfaces_define_types](src/main/java/org/example/item22_interfaces_define_types)         |
 | **آیتم ۲۳** | ساختارهای کلاسی را برای آینده طراحی کنید | [item23_class_hierarchies](src/main/java/org/example/item23_class_hierarchies)         |
 | **آیتم ۲۴** | کلاس‌های عضو استاتیک | [item24_static_member_classes](src/main/java/org/example/item24_static_member_classes)         |
+| **آیتم ۲۵** | کلاس‌های تک‌سطحی | [item25_single_top_level_class](src/main/java/org/example/item25_single_top_level_class)         |
 
 ---
 
