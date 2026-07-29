@@ -28,6 +28,7 @@
 | **آیتم ۱۸** | ترکیب را به وراثت ترجیح دهید | [item18_composition_over_inheritance](src/main/java/org/example/item18_composition_over_inheritance)                                                                           |
 | **آیتم ۱۹** | برای وراثت طراحی کنید یا آن را ممنوع کنید | [item19_inheritance_design](src/main/java/org/example/item19_inheritance_design)                                                                           |
 | **آیتم ۲۰** | کلاس‌های انتزاعی را به Interface ترجیح ندهید | [item20_interfaces_over_abstract_classes](src/main/java/org/example/item20_interfaces_over_abstract_classes)         |
+| **آیتم ۲۱** | Interfaceها را برای آینده طراحی کنید | [item21_design_interfaces](src/main/java/org/example/item21_design_interfaces)         |
 
 ---
 
