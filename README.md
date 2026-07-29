@@ -34,6 +34,7 @@
 | **آیتم ۲۴** | کلاس‌های عضو استاتیک | [item24_static_member_classes](src/main/java/org/example/item24_static_member_classes)         |
 | **آیتم ۲۵** | کلاس‌های تک‌سطحی | [item25_single_top_level_class](src/main/java/org/example/item25_single_top_level_class)         |
 | **آیتم ۲۶** | انواع خام (Raw Types) | [item26_raw_types](src/main/java/org/example/item26_raw_types)         |
+| **آیتم ۲۷** | هشدارهای Unchecked | [item27_unchecked_warnings](src/main/java/org/example/item27_unchecked_warnings)         |
 
 ---
 
