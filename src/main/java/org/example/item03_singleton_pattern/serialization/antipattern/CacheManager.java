@@ -1,0 +1,22 @@
+package org.example.item03_singleton_pattern.serialization.antipattern;
+
+import java.io.Serializable;
+
+public class CacheManager implements Serializable {
+
+    public static final CacheManager INSTANCE =
+            new CacheManager();
+
+    private CacheManager() {
+    }
+
+    /**
+     * serialize()
+     *
+     * ↓
+     *
+     * deserialize()
+     * نتیجه:
+     * INSTANCE != deserializedObject
+     */
+}

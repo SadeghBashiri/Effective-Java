@@ -8,26 +8,26 @@
 
 | شماره آیتم | عنوان فارسی | لینک به پکیج                                                                                                         |
 |------------|-------------|----------------------------------------------------------------------------------------------------------------------|
-| **آیتم ۱** | کارخانه‌های ایستا به‌جای سازنده‌ها | [item01_statictfactory](src/main/java/org/example/item01_staticfactory)                                              |
+| **آیتم ۱** | کارخانه‌های ایستا به‌جای سازنده‌ها | [item01_static_factory_methods](src/main/java/org/example/item01_static_factory_methods)                             |
 | **آیتم ۲** | استفاده از الگوی Builder | [item02_builder](src/main/java/org/example/item02_builder)                                                           |
-| **آیتم ۳** | پیاده‌سازی Singleton | [item03_SingletonPattern](src/main/java/org/example/item03_SingletonPattern)                                         |
+| **آیتم ۳** | پیاده‌سازی Singleton | [item03_singleton_pattern](src/main/java/org/example/item03_singleton_pattern)                                       |
 | **آیتم ۴** | کلاس‌های غیرقابل نمونه‌سازی | [item04_noninstantiable](src/main/java/org/example/item04_noninstantiable)                                           |
-| **آیتم ۵** | تزریق وابستگی به‌جای hardcoding | [item05_dependencyInjection](src/main/java/org/example/item05_dependencyInjection)                                   |
-| **آیتم ۶** | از ایجاد اشیای غیرضروری بپرهیزید | [item06_avoidCreatingUnnecessaryObjects](src/main/java/org/example/item06_avoidCreatingUnnecessaryObjects)           |
+| **آیتم ۵** | تزریق وابستگی به‌جای hardcoding | [item05_dependency_injection](src/main/java/org/example/item05_dependency_injection)                                 |
+| **آیتم ۶** | از ایجاد اشیای غیرضروری بپرهیزید | [item06_avoid_creating_unnecessary_objects](src/main/java/org/example/item06_avoid_creating_unnecessary_objects)           |
 | **آیتم ۷** | حذف ارجاعات به اشیای منسوخ | [item07_eliminate_obsolete_object_references](src/main/java/org/example/item07_eliminate_obsolete_object_references) |
 | **آیتم ۸** | از Finalizer و Cleaner استفاده نکنید | [item08_avoid_finalizers_and_cleaners](src/main/java/org/example/item08_avoid_finalizers_and_cleaners)               |
-| **آیتم ۹** | در try-with-resources از منابع استفاده کنید | [item09](src/main/java/org/example/item09)                                                                           |
-| **آیتم ۱۰** | قرارداد equals را رعایت کنید | [item10](src/main/java/org/example/item10)                                                                           |
-| **آیتم ۱۱** | همواره hashCode را بازنویسی کنید | [item11](src/main/java/org/example/item11)                                                                           |
-| **آیتم ۱۲** | همواره toString را بازنویسی کنید | [item12](src/main/java/org/example/item12)                                                                           |
-| **آیتم ۱۳** | بازنویسی متد clone با احتیاط | [item13_overridecloneJudiciously](src/main/java/org/example/item13_overridecloneJudiciously)                         |
-| **آیتم ۱۴** | پیاده‌سازی Comparable را در نظر بگیرید | [item14](src/main/java/org/example/item14)                                                                           |
-| **آیتم ۱۵** | دسترسی کلاس‌ها و اعضا را محدود کنید | [item15](src/main/java/org/example/item15)                                                                           |
-| **آیتم ۱۶** | در کلاس‌های عمومی از Accessor استفاده کنید | [item16](src/main/java/org/example/item16)                                                                           |
-| **آیتم ۱۷** | تغییرپذیری را به حداقل برسانید | [item17](src/main/java/org/example/item17)                                                                           |
-| **آیتم ۱۸** | ترکیب را به وراثت ترجیح دهید | [item18](src/main/java/org/example/item18)                                                                           |
-| **آیتم ۱۹** | برای وراثت طراحی کنید یا آن را ممنوع کنید | [item19](src/main/java/org/example/item19)                                                                           |
-| **آیتم ۲۰** | کلاس‌های انتزاعی را به Interface ترجیح ندهید | [item20_interfaces_over_abstract_classes](src/main/java/org/example/item20_interfaces_over_abstract_classes)                                                                           |
+| **آیتم ۹** | در try-with-resources از منابع استفاده کنید | [item09_try_with_resources](src/main/java/org/example/item09_try_with_resources)                                                                           |
+| **آیتم ۱۰** | قرارداد equals را رعایت کنید | [item10_equals_contract](src/main/java/org/example/item10_equals_contract)                                                                           |
+| **آیتم ۱۱** | همواره hashCode را بازنویسی کنید | [item11_hashcode](src/main/java/org/example/item11_hashcode)                                                                           |
+| **آیتم ۱۲** | همواره toString را بازنویسی کنید | [item12_tostring](src/main/java/org/example/item12_tostring)                                                                           |
+| **آیتم ۱۳** | بازنویسی متد clone با احتیاط | [item13_override_clone_judiciously](src/main/java/org/example/item13_override_clone_judiciously)                         |
+| **آیتم ۱۴** | پیاده‌سازی Comparable را در نظر بگیرید | [item14_comparable](src/main/java/org/example/item14_comparable)                                                                           |
+| **آیتم ۱۵** | دسترسی کلاس‌ها و اعضا را محدود کنید | [item15_minimize_accessibility](src/main/java/org/example/item15_minimize_accessibility)                                                                           |
+| **آیتم ۱۶** | در کلاس‌های عمومی از Accessor استفاده کنید | [item16_accessor_methods](src/main/java/org/example/item16_accessor_methods)                                                                           |
+| **آیتم ۱۷** | تغییرپذیری را به حداقل برسانید | [item17_minimize_mutability](src/main/java/org/example/item17_minimize_mutability)                                                                           |
+| **آیتم ۱۸** | ترکیب را به وراثت ترجیح دهید | [item18_composition_over_inheritance](src/main/java/org/example/item18_composition_over_inheritance)                                                                           |
+| **آیتم ۱۹** | برای وراثت طراحی کنید یا آن را ممنوع کنید | [item19_inheritance_design](src/main/java/org/example/item19_inheritance_design)                                                                           |
+| **آیتم ۲۰** | کلاس‌های انتزاعی را به Interface ترجیح ندهید | [item20_interfaces_over_abstract_classes](src/main/java/org/example/item20_interfaces_over_abstract_classes)         |
 
 ---
 
