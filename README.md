@@ -37,6 +37,7 @@
 | **آیتم ۲۷** | هشدارهای Unchecked                           | [item27_unchecked_warnings](src/main/java/org/example/item27_unchecked_warnings)         |
 | **آیتم ۲۸** | لیست‌ها را به آرایه‌ها ترجیح دهید              | [item28_lists_over_arrays](src/main/java/org/example/item28_lists_over_arrays)         |
 | **آیتم ۲۹** | انواع جنریک (Generic Types)                  | [item29_generic_types](src/main/java/org/example/item29_generic_types)         |
+| **آیتم ۳۰** | متدهای جنریک (Generic Methods)                | [item30_generic_methods](src/main/java/org/example/item30_generic_methods)         |
 
 ---
 
