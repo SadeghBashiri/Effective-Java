@@ -2,18 +2,21 @@
 
 <a id="top"></a>
 
-# آیتم ۲۶: از Raw Type ها استفاده نکنید
+# آیتم ۲۶: از Raw Typeها استفاده نکنید
 
-## (Don't use raw types)
+## (Don't Use Raw Types)
 
-این Item یکی از مهم‌ترین بخش‌های فصل **Generics** در کتاب Effective Java است.
-Joshua Bloch در اینجا یک قانون ساده ولی بسیار مهم ارائه می‌کند:
+Item 26 یکی از مهم‌ترین بخش‌های فصل **Generics** در کتاب **Effective Java** است. Joshua Bloch در این آیتم تنها یک توصیه‌ی نحوی ارائه نمی‌کند، بلکه یکی از اصول بنیادی **Type System** در جاوا را توضیح می‌دهد.
 
-> **هرگز از Generic Type بدون Type Parameter استفاده نکنید.**
+پیام اصلی این آیتم بسیار ساده است:
 
-یعنی:
+> **هرگز از Generic Type بدون تعیین Type Parameter استفاده نکنید.**
 
-❌ نادرست:
+بنابراین در کدهای مدرن جاوا، استفاده از نوع خام (Raw Type) باید به دو استثنای مشخص محدود شود و در سایر موارد همواره از Genericهای مناسب استفاده شود.
+
+به عنوان مثال:
+
+❌ نادرست
 
 <div dir="ltr">
 
@@ -24,7 +27,7 @@ Map map;
 ```
 </div>
 
-✅ درست:
+✅ صحیح
 
 <div dir="ltr">
 
@@ -39,95 +42,69 @@ Map<String, User> userMap;
 
 ## فهرست مطالب
 
-- [Generic Type چیست؟](#generic-type)
-- [Parameterized Type چیست؟](#parameterized-type)
-- [Raw Type چیست؟](#raw-type)
-- [چرا Raw Type وجود دارد؟](#why-raw-exists)
-- [مشکل اصلی Raw Type چیست؟](#main-problem)
+- [هدف اصلی این آیتم](#core-goal)
+- [مفاهیم پایه](#basic-concepts)
+- [Raw Type چیست؟](#what-is-raw)
+- [چرا Raw Type هنوز در Java وجود دارد؟](#why-raw-exists)
+- [مشکل اصلی Raw Type](#main-problem)
 - [نسخه Generic](#generic-version)
 - [یکی از مهم‌ترین اصول Effective Java](#key-principle)
-- [تفاوت مهم: List vs List\<Object> vs List\<?>](#difference)
-- [Covariance در Generics](#covariance)
-- [Unbounded Wildcard Type](#wildcard)
-- [مثال واقعی Production](#production-example)
-- [مثال unsafeAdd کتاب](#unsafeadd)
-- [Exceptionهای مجاز استفاده از Raw Type](#exceptions)
-- [Type Erasure چیست؟](#type-erasure)
-- [مقایسه نهایی](#comparison)
-- [Decision Framework](#decision-framework)
+- [تفاوت List و List\<Object> و List\<?>](#difference)
+- [تفاوت Set و Set\<?>](#set-difference)
+- [Type Erasure](#type-erasure)
+- [مثال معروف unsafeAdd](#unsafeadd)
+- [استثناهای مجاز استفاده از Raw Type](#exceptions)
+- [بهترین شیوه‌ها (Best Practices)](#best-practices)
+- [Anti-Patternها](#anti-patterns)
+- [ارتباط با سایر Itemها](#connection)
 - [جمع‌بندی نهایی](#final-summary)
 
 [بازگشت به بالا](#top)
 
 ---
 
-<a id="generic-type"></a>
-## ۱. Generic Type چیست؟
+<a id="core-goal"></a>
+## هدف اصلی این آیتم
 
-قبل از Java 5، Collectionها هیچ اطلاعی از نوع داده داخل خودشان نداشتند.
+پیام واقعی Joshua Bloch چیزی فراتر از «از Raw Type استفاده نکن» است.
 
-مثلاً:
+او در واقع می‌گوید:
 
-<div dir="ltr">
+> **کامپایلر را به همکار خود تبدیل کنید، نه اینکه آن را دور بزنید.**
 
-```java
-List names = new ArrayList();
+Generics بزرگ‌ترین مکانیزمی هستند که Java برای **Type Safety** در اختیار برنامه‌نویس قرار داده است.
 
-names.add("Ali");
-names.add(10);
-names.add(new User());
-```
-</div>
-
-کامپایلر هیچ اطلاعی ندارد که این List قرار است چه چیزی نگه دارد.
-
-Java 5 قابلیت Generics را اضافه کرد:
-
-<div dir="ltr">
-
-```java
-List<String> names = new ArrayList<>();
-
-names.add("Ali");
-names.add(10);   // Compile Error
-```
-</div>
-
-حالا:
-
-```
-Compiler → این List فقط String قبول می‌کند
-```
-
-کلاسی که Type Parameter دارد:
-
-<div dir="ltr">
-
-```java
-public interface List<E> { }
-```
-</div>
-
-اینجا `E` یک Type Parameter است. بنابراین `List<E>` یک Generic Type است.
-
-مثال‌های دیگر:
-
-<div dir="ltr">
-
-```java
-class Box<T> { }
-Map<K,V>
-```
-</div>
+هر بار که از Raw Type استفاده می‌کنید، عملاً این قابلیت را غیرفعال می‌کنید و مسئولیت تشخیص خطا را از کامپایلر به زمان اجرای برنامه منتقل می‌کنید.
 
 [بازگشت به بالا](#top)
 
 ---
 
-<a id="parameterized-type"></a>
-## ۲. Parameterized Type چیست؟
+<a id="basic-concepts"></a>
+## مفاهیم پایه
 
-وقتی مقدار واقعی Type Parameter را مشخص کنیم:
+قبل از ورود به بحث، باید چند اصطلاح مهم را بشناسیم.
+
+| اصطلاح | مثال | توضیح |
+|--------|------|-------|
+| Generic Type | `List<E>` | کلاس یا اینترفیس دارای پارامتر نوع |
+| Type Parameter | `E` | پارامتر نوع در تعریف Generic |
+| Actual Type Parameter | `String` | نوع واقعی که جایگزین پارامتر شده است |
+| Parameterized Type | `List<String>` | نسخه تخصصی‌شده Generic |
+| Raw Type | `List` | Generic بدون پارامتر نوع |
+
+به عنوان مثال:
+
+<div dir="ltr">
+
+```java
+List<E>
+```
+</div>
+
+یک **Generic Type** است.
+
+وقتی می‌نویسیم:
 
 <div dir="ltr">
 
@@ -136,30 +113,9 @@ List<String>
 ```
 </div>
 
-اینجا:
+در واقع یک **Parameterized Type** ساخته‌ایم.
 
-- Generic Type: `List<E>`
-- Parameter: `String`
-
-نتیجه: `List<String>` یک Parameterized Type است.
-
-مثال:
-
-<div dir="ltr">
-
-```java
-Map<String, User>  // K = String, V = User
-```
-</div>
-
-[بازگشت به بالا](#top)
-
----
-
-<a id="raw-type"></a>
-## ۳. Raw Type چیست؟
-
-Raw Type یعنی Generic Type بدون مشخص کردن Type Parameter:
+اما اگر بنویسیم:
 
 <div dir="ltr">
 
@@ -168,7 +124,27 @@ List
 ```
 </div>
 
-به جای:
+تمام اطلاعات Generic حذف شده و با یک **Raw Type** مواجه هستیم.
+
+[بازگشت به بالا](#top)
+
+---
+
+<a id="what-is-raw"></a>
+## Raw Type چیست؟
+
+Raw Type یعنی استفاده از Generic بدون تعیین نوع عناصر.
+
+مثلاً:
+
+<div dir="ltr">
+
+```java
+List
+```
+</div>
+
+به جای
 
 <div dir="ltr">
 
@@ -177,63 +153,61 @@ List<String>
 ```
 </div>
 
-یعنی `List<E>` تبدیل می‌شود به `List` و اطلاعات Generic حذف می‌شود.
+در این حالت، کامپایلر دیگر اطلاعی از نوع عناصر ندارد و همه چیز را به صورت `Object` در نظر می‌گیرد.
 
 [بازگشت به بالا](#top)
 
 ---
 
 <a id="why-raw-exists"></a>
-## ۴. چرا Raw Type وجود دارد؟
+## چرا Raw Type هنوز در Java وجود دارد؟
 
-سؤال مهم: اگر بد است، چرا Java اجازه می‌دهد؟
+اگر Raw Type خطرناک است، چرا Java اجازه استفاده از آن را می‌دهد؟
 
-پاسخ: **Backward Compatibility**
+پاسخ تنها یک کلمه است: **Backward Compatibility**
 
-قبل از Java 5:
+زمانی که Java 5 معرفی شد، میلیون‌ها خط کد بدون Generics وجود داشت.
+
+نمونه‌هایی مانند:
 
 <div dir="ltr">
 
 ```java
-List list = new ArrayList();
+Vector
+Hashtable
+ArrayList
 ```
 </div>
 
-کد کاملاً معتبر بود. اگر Java 5 این را ممنوع می‌کرد، میلیون‌ها خط کد قدیمی خراب می‌شد.
+همگی بدون Generic نوشته شده بودند. اگر Java استفاده از Raw Type را ممنوع می‌کرد، تقریباً تمام نرم‌افزارهای موجود از کار می‌افتادند.
 
-بنابراین Java تصمیم گرفت:
-<div dir="ltr">
+بنابراین طراحان زبان تصمیم گرفتند:
 
-```
-Old Code → Raw Types → New Generic Code
-```
-</div>
-را با هم سازگار کند.
+- کدهای قدیمی همچنان معتبر باقی بمانند
+- کدهای جدید بتوانند از Generics استفاده کنند
+- هر دو نسل از کد با یکدیگر سازگار باشند
+
+این تصمیم به مفهوم مهم **Migration Compatibility** منجر شد و در نهایت باعث شد Generics بر پایه **Type Erasure** پیاده‌سازی شوند.
 
 [بازگشت به بالا](#top)
 
 ---
 
 <a id="main-problem"></a>
-## ۵. مشکل اصلی Raw Type چیست؟
+## مشکل اصلی Raw Type
 
-بیایید مثال کتاب را بررسی کنیم.
-
-فرض:
+فرض کنید مجموعه‌ای از تمبرها داریم:
 
 <div dir="ltr">
 
 ```java
-// Collection of stamps
 private final Collection stamps = new ArrayList();
 ```
 </div>
 
-کامپایلر نمی‌داند `stamps contains what?`
+برنامه‌نویس می‌داند این Collection فقط باید شامل `Stamp` باشد، اما کامپایلر هیچ اطلاعی از این موضوع ندارد.
 
-برنامه‌نویس در ذهن خود می‌گوید: "این Collection فقط Stamp دارد" اما کامپایلر این Comment را نمی‌فهمد.
-
-بنابراین:
+بنابراین هر دو دستور زیر مجاز هستند:
 
 <div dir="ltr">
 
@@ -243,49 +217,45 @@ stamps.add(new Coin());
 ```
 </div>
 
-هر دو قبول می‌شوند.
-
-بعداً:
+خطا زمانی آشکار می‌شود که عناصر را بازیابی کنیم:
 
 <div dir="ltr">
 
 ```java
 Iterator i = stamps.iterator();
+
 while (i.hasNext()) {
     Stamp stamp = (Stamp) i.next();
 }
 ```
 </div>
 
-در اینجا `Coin` → Cast to Stamp → `ClassCastException` رخ می‌دهد.
+اگر عنصر `Coin` داخل مجموعه باشد، هنگام Cast شدن به `Stamp` یک `ClassCastException` رخ می‌دهد.
 
-**مشکل اصلی:** خطا هنگام Insert اتفاق افتاده ولی هنگام Read مشخص شده است.
+نکته مهم این است که:
 
-```
-Bug Creation → (زمان طولانی) → Bug Detection
-```
+- **اشتباه هنگام درج (Insert) رخ داده است.**
+- **اما خطا هنگام خواندن (Read) ظاهر می‌شود.**
 
-این بدترین نوع Bug است.
+این دقیقاً همان مشکلی است که Bloch سعی دارد از آن جلوگیری کند.
 
 [بازگشت به بالا](#top)
 
 ---
 
 <a id="generic-version"></a>
-## ۶. نسخه Generic
+## نسخه Generic
 
-حالا:
+کافی است نوع مجموعه را مشخص کنیم:
 
 <div dir="ltr">
 
 ```java
-private final Collection<Stamp> stamps;
+private final Collection<Stamp> stamps = new ArrayList<>();
 ```
 </div>
 
-کامپایلر می‌داند: `Collection → Only Stamp allowed`
-
-پس:
+اکنون:
 
 <div dir="ltr">
 
@@ -294,54 +264,83 @@ stamps.add(new Coin());
 ```
 </div>
 
-خطا: `Coin cannot be converted to Stamp`
+اصلاً کامپایل نمی‌شود.
 
-**مزیت بزرگ:** خطا در **Compile Time**، نه **Runtime**.
+کامپایلر همان لحظه اعلام می‌کند:
+
+```
+Coin cannot be converted to Stamp
+```
+
+این دقیقاً فلسفه اصلی Generics است:
+
+> **Move Errors from Runtime to Compile Time**
 
 [بازگشت به بالا](#top)
 
 ---
 
 <a id="key-principle"></a>
-## ۷. یکی از مهم‌ترین اصول Effective Java
+## یکی از مهم‌ترین اصول Effective Java
 
-Bloch تقریباً در تمام کتاب تکرار می‌کند:
+Joshua Bloch بارها در کتاب تأکید می‌کند:
 
-> هرچه زودتر خطا را پیدا کنید بهتر است.
+> **هرچه زودتر خطا کشف شود، بهتر است.**
 
-اولویت:
+ترتیب مطلوب کشف خطا:
 <div dir="ltr">
 
 ```
-Compile Time → Test Time → Production Runtime
+Compile Time → Unit Test → Integration Test → Production
 ```
 </div>
-Raw Type شما را از مرحله اول به مرحله سوم پرت می‌کند.
+Raw Type این زنجیره را می‌شکند و خطا را مستقیماً به Runtime منتقل می‌کند.
 
 [بازگشت به بالا](#top)
 
 ---
 
 <a id="difference"></a>
-## ۸. تفاوت مهم: List vs List\<Object> vs List\<?>
+## تفاوت List و List\<Object> و List\<?>
 
-### حالت اول: `List` (Raw Type)
+این سه نوع، مفاهیم کاملاً متفاوتی دارند.
 
-معنی: "من Generic System را خاموش کردم" — کاملاً unsafe.
+### ۱. Raw Type
 
-### حالت دوم: `List<Object>` (Parameterized Type)
+<div dir="ltr">
 
-معنی: "این List هر Object ای را قبول می‌کند"
+```java
+List
+```
+</div>
+
+یعنی: «سیستم Generics را کنار گذاشته‌ام.» این نوع ناامن است.
+
+### ۲. List\<Object>
+
+<div dir="ltr">
+
+```java
+List<Object>
+```
+</div>
+
+یعنی: «این لیست می‌تواند هر نوع شیئی را نگهداری کند، اما همچنان قوانین Generics برقرار هستند.»
+
+مثلاً:
 
 <div dir="ltr">
 
 ```java
 List<Object> list = new ArrayList<>();
+
 list.add("Ali");
 list.add(10);
-list.add(new User());  // کاملاً صحیح است
+list.add(new User());
 ```
 </div>
+
+این کاملاً ایمن است.
 
 اما:
 
@@ -349,214 +348,186 @@ list.add(new User());  // کاملاً صحیح است
 
 ```java
 List<String> strings = new ArrayList<>();
-List<Object> objects = strings;  // ❌ Compile Error
+
+List<Object> objects = strings;
 ```
 </div>
 
-چرا؟ چون `List<String>` فقط String دارد، ولی `List<Object>` اجازه می‌دهد `objects.add(new Integer(10))` که باعث خراب شدن List اصلی می‌شود.
+غیرمجاز است، زیرا Generics در جاوا **Invariant** هستند.
+
+### ۳. List\<?>
+
+<div dir="ltr">
+
+```java
+List<?>
+```
+</div>
+
+به معنای: «لیستی از یک نوع ناشناخته.»
+
+در این حالت:
+
+- می‌توان عناصر را خواند
+- اما (به جز `null`) نمی‌توان چیزی به آن اضافه کرد
+
+این ویژگی باعث حفظ **Type Invariant** مجموعه می‌شود.
 
 [بازگشت به بالا](#top)
 
 ---
 
-<a id="covariance"></a>
-## ۹. Covariance در Generics
+<a id="set-difference"></a>
+## تفاوت Set و Set\<?>
 
-این اشتباه رایج است:
+فرض کنید نوع عناصر برای شما اهمیتی ندارد.
 
-<div dir="ltr">
-
-```java
-List<String> → List<Object>
-```
-</div>
-
-در Java:
-<div dir="ltr">
-
-```
-Generic Types are invariant
-```
-</div>
-
-یعنی `List<String> != List<Object>`
-
-اگرچه:
+**اشتباه:**
 
 <div dir="ltr">
 
 ```java
-String extends Object
+Set set;
 ```
 </div>
 
-درست است، ولی:
+**درست:**
 
 <div dir="ltr">
 
 ```java
-List<String> → List<Object>
+Set<?> set;
 ```
 </div>
 
-**X** (غیرمجاز)
+چرا؟
+
+در Raw Type:
+
+<div dir="ltr">
+
+```java
+set.add("Ali");
+set.add(15);
+set.add(new User());
+```
+</div>
+
+همه چیز مجاز است.
+
+اما در `Set<?>` کامپایلر می‌گوید: "من نوع واقعی را نمی‌دانم، پس اجازه اضافه کردن هیچ عنصری را نمی‌دهم (به جز `null`)."
+
+این همان چیزی است که امنیت نوع مجموعه را حفظ می‌کند.
 
 [بازگشت به بالا](#top)
 
 ---
 
-<a id="wildcard"></a>
-## ۱۰. Unbounded Wildcard Type
+<a id="type-erasure"></a>
+## Type Erasure
 
-اینجا Bloch راه‌حل را معرفی می‌کند:
+یکی از مهم‌ترین مفاهیم پشت Generics، **Type Erasure** است.
 
-<div dir="ltr">
-
-```java
-Set<?>
-```
-</div>
-
-یعنی: Set of some unknown type
-
-`Set<String>`، `Set<Integer>`، `Set<User>` همگی `Set<?>` هستند.
-
-### تفاوت مهم:
-
-**Raw Type (`Set`):** می‌گوید هر چیزی بریز داخل من.
-
-**Wildcard (`Set<?>`):** می‌گوید من نمی‌دانم نوع چیست، ولی اجازه خراب کردن Type Safety را نمی‌دهم.
-
-مثال:
+در زمان کامپایل:
 
 <div dir="ltr">
 
 ```java
-static void print(Set<?> set) { }
+List<String>
 ```
 </div>
 
-می‌تواند `Set<String>`، `Set<Integer>`، `Set<User>` بگیرد.
+وجود دارد.
 
-اما:
+اما در زمان اجرا:
 
 <div dir="ltr">
 
 ```java
-set.add("hello");  // ❌ Compile Error
+List
 ```
 </div>
 
-چون نمی‌دانیم `?` = String؟ Integer؟ User؟
+اطلاعات Generic حذف شده‌اند.
 
-تنها چیزی که اجازه دارد:
-
-<div dir="ltr">
-
-```java
-set.add(null);
-```
-</div>
-
-[بازگشت به بالا](#top)
-
----
-
-<a id="production-example"></a>
-## ۱۱. مثال واقعی Production
-
-فرض کنید API دارید:
-
-<div dir="ltr">
-
-```java
-public void process(List list)  // ❌
-```
-</div>
-
-مشکل: هر چیزی می‌تواند وارد شود.
-
-بهتر:
-
-- اگر فقط خواندن: `public void process(List<?> list)`
-- اگر فقط String: `public void process(List<String> list)`
-- اگر Object لازم دارید: `public void process(List<Object> list)`
+به همین دلیل JVM نمی‌تواند تشخیص دهد که یک شیء از نوع `List<String>` است یا `List<Integer>`، زیرا هر دو در Runtime تنها یک `List` هستند.
 
 [بازگشت به بالا](#top)
 
 ---
 
 <a id="unsafeadd"></a>
-## ۱۲. مثال unsafeAdd کتاب
+## مثال معروف unsafeAdd
+
+کتاب مثال زیر را ارائه می‌دهد:
 
 <div dir="ltr">
 
 ```java
-public static void main(String[] args) {
-    List<String> strings = new ArrayList<>();
-    unsafeAdd(strings, 42);
-    String s = strings.get(0);
-}
+List<String> strings = new ArrayList<>();
 
+unsafeAdd(strings, 42);
+
+String s = strings.get(0);
+```
+</div>
+
+و متد:
+
+<div dir="ltr">
+
+```java
 static void unsafeAdd(List list, Object o) {
     list.add(o);
 }
 ```
 </div>
 
-**چرا خراب می‌شود؟**
+چه اتفاقی می‌افتد؟
 
-1. `List<String>` ساخته شد.
-2. Raw Type وارد شد: `List` — Generic Information از بین رفت.
-3. Integer وارد List شد.
-4. Compiler: `String s = strings.get(0);` کدی شبیه `String s = (String) strings.get(0);` تولید می‌کند.
-5. `Integer != String` → `ClassCastException`
+1. لیست از نوع `List<String>` ساخته می‌شود.
+2. متد `unsafeAdd` به دلیل استفاده از Raw Type اطلاعات Generic را نادیده می‌گیرد.
+3. عدد `42` وارد لیست می‌شود.
+4. هنگام اجرای `strings.get(0)`، کامپایلر Cast پنهان به `String` تولید می‌کند.
+5. در Runtime، چون عنصر واقعاً `Integer` است، `ClassCastException` رخ می‌دهد.
 
 [بازگشت به بالا](#top)
 
 ---
 
 <a id="exceptions"></a>
-## ۱۳. Exceptionهای مجاز استفاده از Raw Type
+## استثناهای مجاز استفاده از Raw Type
 
-Bloch دو استثناء ذکر می‌کند:
+Joshua Bloch فقط دو استثنا را مجاز می‌داند.
 
-### Exception 1: Class Literal
+### ۱. Class Literal
 
-❌ غلط:
-
-<div dir="ltr">
-
-```java
-List<String>.class
-```
-</div>
-
-✅ درست:
+**درست:**
 
 <div dir="ltr">
 
 ```java
 List.class
+String[].class
+int.class
 ```
 </div>
 
-چون Runtime اصلاً Generic Information ندارد (به دلیل Type Erasure).
-
-### Exception 2: instanceof
-
-❌ غلط:
+**نادرست:**
 
 <div dir="ltr">
 
 ```java
-if (obj instanceof List<String>)
+List<String>.class
+List<?>.class
 ```
 </div>
 
-چون Runtime نمی‌داند String چیست.
+زیرا بعد از Type Erasure چیزی به نام `List<String>` در Runtime وجود ندارد.
 
-✅ درست:
+### ۲. instanceof
+
+**درست:**
 
 <div dir="ltr">
 
@@ -567,77 +538,79 @@ if (obj instanceof List) {
 ```
 </div>
 
-[بازگشت به بالا](#top)
-
----
-
-<a id="type-erasure"></a>
-## ۱۴. Type Erasure چیست؟
-
-Java Generics در Runtime وجود ندارند.
-
-مثلاً `List<String>` در Runtime تبدیل می‌شود به `List`.
-
-یعنی:
-
-- Compile Time: `List<String>`
-- Runtime: `List`
-
-به همین دلیل `obj instanceof List<String>` غیرممکن است.
-
-[بازگشت به بالا](#top)
-
----
-
-<a id="comparison"></a>
-## ۱۵. مقایسه نهایی
-
-| Type | مثال | Type Safety | کاربرد |
-|------|------|-------------|--------|
-| Generic Type | `List<E>` | ندارد تا مقداردهی شود | تعریف کلاس |
-| Parameterized Type | `List<String>` | ✅ کامل | استفاده معمول |
-| Raw Type | `List` | ❌ خطرناک | فقط Legacy |
-| Wildcard | `List<?>` | ✅ امن | وقتی Type مهم نیست |
-| Object Parameter | `List<Object>` | ✅ امن | هر Object |
-
-[بازگشت به بالا](#top)
-
----
-
-<a id="decision-framework"></a>
-## ۱۶. Decision Framework
-
-وقتی Collection می‌نویسید:
-
-### سؤال ۱: نوع دقیق مشخص است؟
-<div dir="ltr">
-
-```
-Yes → List<User>
-```
-</div>
-### سؤال ۲: هر نوعی قابل قبول است؟
-<div dir="ltr">
-
-```
-Yes → List<Object>
-```
-</div>
-### سؤال ۳: نوع مهم نیست و فقط خواندن داریم؟
-<div dir="ltr">
-
-```
-Yes → List<?>
-```
-</div>
-### هیچ‌وقت:
+اما:
 
 <div dir="ltr">
 
 ```java
-List  // ❌
+obj instanceof List<String>
 ```
 </div>
+
+غیرقانونی است، زیرا JVM اطلاعات پارامتر نوع را در زمان اجرا در اختیار ندارد.
+
+[بازگشت به بالا](#top)
+
+---
+
+<a id="best-practices"></a>
+## بهترین شیوه‌ها (Best Practices)
+
+| وضعیت | انتخاب مناسب |
+|--------|--------------|
+| نوع دقیق مشخص است | `List<User>` |
+| هر نوع شیء مجاز است | `List<Object>` |
+| نوع مهم نیست و فقط خواندن انجام می‌شود | `List<?>` |
+| سازگاری با کدهای قدیمی یا `instanceof` و `Class Literal` | استفاده محدود از Raw Type |
+| توسعه کد جدید | هرگز از Raw Type استفاده نکنید |
+
+[بازگشت به بالا](#top)
+
+---
+
+<a id="anti-patterns"></a>
+## Anti-Patternها
+
+❌ استفاده از Raw Type:
+
+<div dir="ltr">
+
+```java
+List list = new ArrayList();
+```
+</div>
+
+❌ Castهای متعدد:
+
+<div dir="ltr">
+
+```java
+User user = (User) list.get(0);
+```
+</div>
+
+❌ استفاده از `@SuppressWarnings("unchecked")` بدون اثبات Type Safety.
+
+[بازگشت به بالا](#top)
+
+---
+
+<a id="connection"></a>
+## ارتباط با سایر Itemها
+
+```
+Item 26 → Raw Types
+    ↓
+Item 27 → Unchecked Warnings
+    ↓
+Item 28 → Type Erasure و تفاوت Array و Generic
+    ↓
+Item 30 → Generic Methods
+    ↓
+Item 31 → Bounded Wildcards
+```
+
+درک صحیح Item 26 پایه فهم تمام مباحث پیشرفته Generics است.
 
 [بازگشت به بالا](#top)
 
@@ -646,59 +619,18 @@ List  // ❌
 <a id="final-summary"></a>
 ## جمع‌بندی نهایی
 
-قانون اصلی:
+پیام اصلی **Item 26** فراتر از «از Raw Type استفاده نکن» است. این آیتم درباره **طراحی قرارداد (Design Contract) بین برنامه‌نویس و کامپایلر** است. با استفاده از Generics، اطلاعات نوع به‌صورت صریح در سیستم نوع جاوا ثبت می‌شود و کامپایلر می‌تواند ناسازگاری‌های نوع را پیش از اجرای برنامه شناسایی کند. در مقابل، Raw Type این اطلاعات را پنهان می‌کند، Type Safety را از بین می‌برد و تشخیص خطا را از زمان کامپایل به زمان اجرا منتقل می‌کند؛ نتیجه آن می‌تواند بروز `ClassCastException`، دشوار شدن Refactoring و کاهش خوانایی و قابلیت نگهداری API باشد.
 
-> Raw Type ها را استفاده نکنید.
+### قانون طلایی
 
-دلایل:
+| اصل | توضیح |
+|-----|-------|
+| **انتخاب پیش‌فرض** | همیشه از Parameterized Types مانند `List<User>` استفاده کنید |
+| **اگر نوع مشخص نیست** | از Wildcard مانند `List<?>` استفاده کنید |
+| **اگر هر نوع شیء مجاز است** | از `List<Object>` استفاده کنید |
+| **تنها استثناها** | `Class Literal` و `instanceof` |
 
-- ✅ از دست دادن Type Safety
-- ✅ انتقال خطا از Compile Time به Runtime
-- ✅ ایجاد ClassCastException
-- ✅ کاهش خوانایی API
-- ✅ سخت شدن Refactoring
-
-استثناها:
-
-- `.class`
-- `instanceof`
-
-### قانون معماری
-
-در Java مدرن:
-
-<div dir="ltr">
-
-```java
-List<User>
-```
-</div>
-
-باید انتخاب پیش‌فرض شما باشد.
-
-اگر نوع مشخص نیست:
-
-<div dir="ltr">
-
-```java
-List<?>
-```
-</div>
-
-نه:
-
-<div dir="ltr">
-
-```java
-List
-```
-</div>
-
-### نکته Senior
-
-از دید یک توسعه‌دهنده Senior، Item 26 در واقع درباره **Design Contract بین Compiler و Developer** است:
-
-با Generics شما بخشی از قرارداد سیستم را به Compiler می‌دهید تا قبل از اجرای Production جلوی خطا را بگیرد. Raw Type یعنی شما عمداً این قرارداد را خاموش کرده‌اید.
+این رویکرد به کامپایلر اجازه می‌دهد نقش یک لایه دفاعی قدرتمند را ایفا کند و بسیاری از خطاهای زمان اجرا را پیش از استقرار نرم‌افزار در محیط Production حذف کند.
 
 ---
 
