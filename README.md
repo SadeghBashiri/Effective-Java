@@ -37,7 +37,7 @@
 
 | منبع             | لینک                                                                                                                                       |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| فایل PDF کتاب    | [📥 دانلود PDF کتاب Effective Java](https://raw.githubusercontent.com/SadeghBashiri/Effective-Java/main/src/main/resources/Effective-Java-Joshua-Bloch.pdf) |
+| فایل PDF کتاب    | [📥 دانلود PDF کتاب Effective Java]([https://raw.githubusercontent.com/SadeghBashiri/Effective-Java/main/src/main/resources/Effective-Java-Joshua-Bloch.pdf](https://github.com/SadeghBashiri/Effective-Java/releases/download/v1.0.0/Effective.Java.3rd.Edition.pdf)) |
 همچنین برای بررسی مفاهیم و APIهای Java از مستندات رسمی استفاده می‌شود:
 
 * Java SE Documentation
