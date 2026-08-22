@@ -107,6 +107,7 @@
 | **آیتم ۲۹** | انواع جنریک (Generic Types)                  | [item29_generic_types](src/main/java/org/example/item29_generic_types)         |
 | **آیتم ۳۰** | متدهای جنریک (Generic Methods)                | [item30_generic_methods](src/main/java/org/example/item30_generic_methods)         |
 | **آیتم ۳۱** | استفاده از Wildcards برای افزایش انعطاف‌پذیری API | [item31_use_bounded_wildcards_to_increase_API_flexibility](src/main/java/org/example/item31_use_bounded_wildcards_to_increase_API_flexibility)         |
+| **آیتم ۳۲** | ترکیب جنریک‌ها و varargs با احتیاط         | [item32_combine_generics_and_varargs_judiciously](src/main/java/org/example/item32_combine_generics_and_varargs_judiciously)         |
 
 > این فهرست با پیشرفت پروژه تکمیل خواهد شد.
 
