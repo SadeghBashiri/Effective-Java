@@ -109,6 +109,7 @@
 | **آیتم ۳۱** | استفاده از Wildcards برای افزایش انعطاف‌پذیری API | [item31_use_bounded_wildcards_to_increase_API_flexibility](src/main/java/org/example/item31_use_bounded_wildcards_to_increase_API_flexibility) |
 | **آیتم ۳۲** | ترکیب جنریک‌ها و varargs با احتیاط         | [item32_combine_generics_and_varargs_judiciously](src/main/java/org/example/item32_combine_generics_and_varargs_judiciously)                   |
 | **آیتم ۳۳** | از Containerهای ناهمگنِ Type-Safe استفاده کنید         | [item33_Consider_typesafe_heterogeneous_containers](src/main/java/org/example/item33_Consider_typesafe_heterogeneous_containers)               |
+| **آیتم ۳۴** | به جای ثابت‌های int از enum استفاده کنید         | [item34_use_enums_instead_of_int_constants](src/main/java/org/example/item_34_use_enums_instead_of_int_constants)                               |
 
 > این فهرست با پیشرفت پروژه تکمیل خواهد شد.
 
