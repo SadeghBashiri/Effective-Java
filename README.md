@@ -167,19 +167,24 @@ project-root/
 
 برای مثال:
 
+<div dir="ltr">
+
 ```text
 item01.md
 ```
-
+</div>
 که شامل متن فارسی مربوط به Item است.
 
 ### 2. Package مربوط به مثال‌های عملی
 
 برای مثال:
 
+<div dir="ltr">
+
 ```text
 item01_static_factory_methods
 ```
+</div>
 
 که شامل کدهای Java مربوط به همان Item است.
 
@@ -241,6 +246,8 @@ English Text → AI → Publish
 
 بلکه فرایند موردنظر این است:
 
+<div dir="ltr">
+
 ```text
 Original Text (PDF Reference)
       ↓
@@ -254,6 +261,7 @@ Code Verification
       ↓
 Final Translation
 ```
+</div>
 
 ---
 
@@ -280,9 +288,12 @@ Final Translation
 
 برای جلوگیری از ترجمه‌های متفاوت یک اصطلاح در بخش‌های مختلف پروژه، یک واژه‌نامه مشترک در فایل زیر نگهداری می‌شود:
 
+<div dir="ltr">
+
 ```text
 GLOSSARY.md
 ```
+</div>
 
 اگر هنگام ترجمه با یک اصطلاح تخصصی جدید مواجه شدید، در صورت نیاز معادل پیشنهادی آن را به این فایل اضافه کنید.
 
@@ -402,27 +413,39 @@ Item موردنظر خود را مشخص کنید.
 
 برای ترجمه یک Item جدید پیشنهاد می‌شود از الگوی زیر استفاده کنید:
 
+<div dir="ltr">
+
 ```text
 translate/item-01
 ```
+</div>
 
 برای اصلاح یک Item موجود:
+
+<div dir="ltr">
 
 ```text
 edit/item-01
 ```
+</div>
 
 برای اصلاح کدهای یک Item:
+
+<div dir="ltr">
 
 ```text
 fix/item-01
 ```
+</div>
 
 مثال:
+
+<div dir="ltr">
 
 ```text
 translate/item-15
 ```
+</div>
 
 ---
 
@@ -432,21 +455,30 @@ translate/item-15
 
 نمونه:
 
+<div dir="ltr">
+
 ```text
 Translate item 15
 ```
+</div>
 
 یا:
+
+<div dir="ltr">
 
 ```text
 Improve item 15 translation
 ```
+</div>
 
 یا برای کد:
+
+<div dir="ltr">
 
 ```text
 Improve item 15 examples
 ```
+</div>
 
 ---
 
@@ -533,10 +565,13 @@ IDEهای پیشنهادی:
 
 برای مثال:
 
+<div dir="ltr">
+
 ```text
 item01_static_factory_methods/
     └── Main.java
 ```
+</div>
 
 با اجرای کلاس `Main` می‌توانید رفتار مثال مربوط به Item را مشاهده کنید.
 
