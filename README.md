@@ -123,6 +123,7 @@
 | **آیتم ۴۵** | Streamها را به کاربردهای مناسب استفاده کنید         | [item45_use_streams_judiciously](src/main/java/org/example/item45_use_streams_judiciously)                               |
 | **آیتم ۴۶** | توابع بدون عارضه جانبی را در Streamها ترجیح دهید         | [item46_prefer_side_effect_free_functions_in_streams](src/main/java/org/example/item46_prefer_side_effect_free_functions_in_streams)                               |
 | **آیتم ۴۷** | Collection را به‌عنوان نوع بازگشتی به Stream ترجیح دهید         | [item47_prefer_collection_to_stream_as_a_return_type](src/main/java/org/example/item47_prefer_collection_to_stream_as_a_return_type)                               |
+| **آیتم ۴۸** | هنگام موازی‌سازی Streamها با احتیاط عمل کنید         | [item48_use_caution_when_making_streams_parallel](src/main/java/org/example/item48_use_caution_when_making_streams_parallel)                               |
 
 > این فهرست با پیشرفت پروژه تکمیل خواهد شد.
 
