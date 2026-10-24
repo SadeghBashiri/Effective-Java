@@ -113,6 +113,7 @@
 | **آیتم ۳۵** | از fields نمونه‌ای به جای ordinals استفاده کنید         | [item35_use_instance_fields_instead_of_ordinals](src/main/java/org/example/item35_use_instance_fields_instead_of_ordinals)                               |
 | **آیتم ۳۶** | به‌جای ordinal() از فیلد نمونه استفاده کنید         | [item36_use_EnumSet_instead_of_bit_fields](src/main/java/org/example/item36_use_EnumSet_instead_of_bit_fields)                               |
 | **آیتم ۳۷** | به‌جای اندیس‌گذاری با ordinal() از EnumMap استفاده کنید         | [item37_use_EnumMap_instead_of_ordinal_indexing](src/main/java/org/example/item37_use_EnumMap_instead_of_ordinal_indexing)                               |
+| **آیتم ۳۸** | از Interfaceهای قابل توسعه برای افزایش انعطاف‌پذیری API استفاده کنید         | [item38_emulate_extensible_enums_with_Interfaces](src/main/java/org/example/item38_emulate_extensible_enums_with_Interfaces)                               |
 
 > این فهرست با پیشرفت پروژه تکمیل خواهد شد.
 
