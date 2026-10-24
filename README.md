@@ -120,6 +120,7 @@
 | **آیتم ۴۲** | Lambdaها را به کلاس‌های ناشناس ترجیح دهید         | [item42_prefer_lambdas_to_anonymous_classes](src/main/java/org/example/item42_prefer_lambdas_to_anonymous_classes)                               |
 | **آیتم ۴۳** | Method References را به جای Lambdaها ترجیح دهید         | [item43_prefer_method_references_to_Lambdas](src/main/java/org/example/item43_prefer_method_references_to_Lambdas)                               |
 | **آیتم ۴۴** | Functional Interfaceهای استاندارد را ترجیح دهید         | [item44_favor_the_use_of_standard_functional](src/main/java/org/example/item44_favor_the_use_of_standard_functional)                               |
+| **آیتم ۴۵** | Streamها را به کاربردهای مناسب استفاده کنید         | [item45_use_streams_judiciously](src/main/java/org/example/item45_use_streams_judiciously)                               |
 
 > این فهرست با پیشرفت پروژه تکمیل خواهد شد.
 
