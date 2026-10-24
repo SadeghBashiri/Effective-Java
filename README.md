@@ -116,6 +116,7 @@
 | **آیتم ۳۸** | از Interfaceهای قابل توسعه برای افزایش انعطاف‌پذیری API استفاده کنید         | [item38_emulate_extensible_enums_with_Interfaces](src/main/java/org/example/item38_emulate_extensible_enums_with_Interfaces)                               |
 | **آیتم ۳۹** | Annotationها را به Naming Patternها ترجیح دهید         | [item39_prefer_annotations_to_naming_patterns](src/main/java/org/example/item39_prefer_annotations_to_naming_patterns)                               |
 | **آیتم ۴۰** | استفادهٔ یکپارچه از Annotation مربوط به @Override         | [item40_consistently_use_the_override_annotation](src/main/java/org/example/item40_consistently_use_the_override_annotation)                               |
+| **آیتم ۴۱** | Lambdaها را به کلاس‌های ناشناس ترجیح دهید         | [item42_prefer_lambdas_to_anonymous_classes](src/main/java/org/example/item42_prefer_lambdas_to_anonymous_classes)                               |
 
 > این فهرست با پیشرفت پروژه تکمیل خواهد شد.
 
