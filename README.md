@@ -118,6 +118,7 @@
 | **آیتم ۴۰** | استفادهٔ یکپارچه از Annotation مربوط به @Override         | [item40_consistently_use_the_override_annotation](src/main/java/org/example/item40_consistently_use_the_override_annotation)                               |
 | **آیتم ۴۱** | استفاده از Marker Interface برای تعریف نوع (Type)         | [item41_use_marker_interfaces_to_define_types](src/main/java/org/example/item41_use_marker_interfaces_to_define_types)                               |
 | **آیتم ۴۲** | Lambdaها را به کلاس‌های ناشناس ترجیح دهید         | [item42_prefer_lambdas_to_anonymous_classes](src/main/java/org/example/item42_prefer_lambdas_to_anonymous_classes)                               |
+| **آیتم ۴۳** | Method References را به جای Lambdaها ترجیح دهید         | [item43_prefer_method_references_to_Lambdas](src/main/java/org/example/item43_prefer_method_references_to_Lambdas)                               |
 
 > این فهرست با پیشرفت پروژه تکمیل خواهد شد.
 
