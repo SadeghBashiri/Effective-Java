@@ -122,6 +122,7 @@
 | **آیتم ۴۴** | Functional Interfaceهای استاندارد را ترجیح دهید         | [item44_favor_the_use_of_standard_functional](src/main/java/org/example/item44_favor_the_use_of_standard_functional)                               |
 | **آیتم ۴۵** | Streamها را به کاربردهای مناسب استفاده کنید         | [item45_use_streams_judiciously](src/main/java/org/example/item45_use_streams_judiciously)                               |
 | **آیتم ۴۶** | توابع بدون عارضه جانبی را در Streamها ترجیح دهید         | [item46_prefer_side_effect_free_functions_in_streams](src/main/java/org/example/item46_prefer_side_effect_free_functions_in_streams)                               |
+| **آیتم ۴۷** | Collection را به‌عنوان نوع بازگشتی به Stream ترجیح دهید         | [item47_prefer_collection_to_stream_as_a_return_type](src/main/java/org/example/item47_prefer_collection_to_stream_as_a_return_type)                               |
 
 > این فهرست با پیشرفت پروژه تکمیل خواهد شد.
 
